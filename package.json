@@ -1,0 +1,10 @@
+{
+  "name": "js-colourlovers",
+  "version": "1.0.0",
+  "description": "A COLOURlovers API Javascript wrapper",
+  "main": "index.js",
+  "repository": "https://github.com/albemala/js-colourlovers.git",
+  "author": "<albemala@gmail.com>",
+  "license": "MIT",
+  "private": false
+}

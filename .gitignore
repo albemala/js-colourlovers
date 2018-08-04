@@ -1,0 +1,6 @@
+
+# JetBrains IDEs
+.idea/
+
+# npm packages
+node_modules/
