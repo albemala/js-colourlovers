@@ -2,9 +2,18 @@
   "name": "js-colourlovers",
   "version": "1.0.0",
   "description": "A COLOURlovers API Javascript wrapper",
-  "main": "index.js",
   "repository": "https://github.com/albemala/js-colourlovers.git",
   "author": "<albemala@gmail.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "scripts": {
+    "test": "yarn mocha ./tests/index.js"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "request": "^2.87.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.10"
+  }
 }
