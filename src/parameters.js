@@ -1,6 +1,17 @@
 'use strict';
 
 
+const {
+    isValidObject,
+    isValidArray,
+    isValidBoolean,
+    isValidInteger,
+    isValidNumber,
+    isValidString,
+    isValidDate,
+} = require('./utils');
+
+
 const SortByDateCreated = 'dateCreated';
 const SortByScore = 'score';
 const SortByName = 'name';
@@ -44,26 +55,47 @@ function createColorsRequestParameters(
     resultsCount,
     resultsOffset,
 ) {
-    // TODO validate parameters
+    let parameters = {};
+
+    // keywords: search+term
+    if (isValidString(keywords)) parameters.keywords = keywords;
+
+    // keywordExact: 0 or 1   [Perform an exact search for the keywords passed. Default 0]
+    if (isValidBoolean(exactKeywords)) parameters.keywordExact = exactKeywords ? 1 : 0;
+
+    // hueRange: 12,68   [values must be 0>value<359, and the left value must be less than the right value]
+    if (isValidInteger(hueMin)
+        && isValidInteger(hueMax)
+        && hueMin >= 0 && hueMin <= 359
+        && hueMax >= 0 && hueMax <= 359
+        && hueMin < hueMax)
+        parameters.hueRange = `${hueMin},${hueMax}`;
+
+    // briRange: 2,88   [values must be 0>value<99, and the left value must be less than the right value]
+    if (isValidInteger(brightnessMin)
+        && isValidInteger(brightnessMax)
+        && brightnessMin >= 0 && brightnessMin <= 99
+        && brightnessMax >= 0 && brightnessMax <= 99
+        && brightnessMin < brightnessMax)
+        parameters.briRange = `${brightnessMin},${brightnessMax}`;
+
+    // lover: e.g. COLOURlover
+    if (isValidString(userName)) parameters.lover = userName;
+
+    // orderCol: X   [Where X can be: dateCreated, score, name, numVotes, or numViews]
+    if (isValidString(sortBy)) parameters.orderCol = sortBy;
+
+    // sortBy: X   [Where X can be: ASC or DESC. Default ASC]
+    if (isValidString(sortOrder)) parameters.sortBy = sortOrder;
+
+    // numResults: 20   [Number of results to return, maximum of 100. Default 20]
+    if (isValidInteger(resultsCount)) parameters.numResults = resultsCount;
+
+    // resultOffset: 5   [Result offset, for paging. Default 0]
+    if (isValidInteger(resultsOffset)) parameters.resultOffset = resultsOffset;
+
     return {
-        // keywords: search+term
-        keywords: keywords,
-        // keywordExact: 0 or 1   [Perform an exact search for the keywords passed. Default 0]
-        keywordExact: exactKeywords ? 1 : 0,
-        // hueRange: 12,68   [values must be 0>value<359, and the left value must be less than the right value]
-        hueRange: `${hueMin},${hueMax}`,
-        // briRange: 2,88   [values must be 0>value<99, and the left value must be less than the right value]
-        briRange: `${brightnessMin},${brightnessMax}`,
-        // lover: e.g. COLOURlover
-        lover: userName,
-        // orderCol: X   [Where X can be: dateCreated, score, name, numVotes, or numViews]
-        orderCol: sortBy,
-        // sortBy: X   [Where X can be: ASC or DESC. Default ASC]
-        sortBy: sortOrder,
-        // numResults: 20   [Number of results to return, maximum of 100. Default 20]
-        numResults: resultsCount,
-        // resultOffset: 5   [Result offset, for paging. Default 0]
-        resultOffset: resultsOffset,
+        ...parameters,
         ...JsonFormatParam,
     };
 }
@@ -80,32 +112,49 @@ function createPalettesRequestParameters(
     resultsCount,
     resultsOffset,
 ) {
-    // TODO validate parameters
     // TODO hex could also be an array
     // TODO pass hex_logic as parameter
+
+    let parameters = {};
+
+    // keywords: search+term
+    if (isValidString(keywords)) parameters.keywords = keywords;
+
+    // keywordExact: 0 or 1   [Perform an exact search for the keywords passed. Default 0]
+    if (isValidBoolean(exactKeywords)) parameters.keywordExact = exactKeywords ? 1 : 0;
+
+    // hueOption: yellow,orange,red  or  green,violet  or  blue [Possible Values can be a combination of: red, orange, yellow, green, aqua, blue, violet, and / or fuchsia]
+    if (isValidArray(hues)) parameters.hueOption = hues.join(',');
+
+    // hex: 00FF33  or  00FF33,CC00FF,DD0033,003333,0033FF [Possible Values: any valid 6-char hex value or list of up to five (5) hex values, separated by commas]
+    // remove '#' char
+    if (hex.charAt(0) === '#')
+        hex = hex.substr(1);
+    if (isValidString(hex)) parameters.hex = hex;
+
+    // hex_logic: AND  or  OR. Sets the comparison logic for the hex list. Passing AND will find palettes with all provided hex values, passing OR will find palettes with any of the provided hex values. [Possible Values: AND or OR. Default AND]
+    parameters.hex_logic = 'AND';
+
+    // showPaletteWidths: 0 or 1   [Shows palette's color's widths. Default 0]
+    if (isValidBoolean(enableColorsWidths)) parameters.showPaletteWidths = enableColorsWidths ? 1 : 0;
+
+    // lover: e.g. COLOURlover
+    if (isValidString(userName)) parameters.lover = userName;
+
+    // orderCol: X   [Where X can be: dateCreated, score, name, numVotes, or numViews]
+    if (isValidString(sortBy)) parameters.orderCol = sortBy;
+
+    // sortBy: X   [Where X can be: ASC or DESC. Default ASC]
+    if (isValidString(sortOrder)) parameters.sortBy = sortOrder;
+
+    // numResults: 20   [Number of results to return, maximum of 100. Default 20]
+    if (isValidInteger(resultsCount)) parameters.numResults = resultsCount;
+
+    // resultOffset: 5   [Result offset, for paging. Default 0]
+    if (isValidInteger(resultsOffset)) parameters.resultOffset = resultsOffset;
+
     return {
-        // lover: COLOURlover
-        lover: userName,
-        // hueOption: yellow,orange,red  or  green,violet  or  blue [Possible Values can be a combination of: red, orange, yellow, green, aqua, blue, violet, and / or fuchsia]
-        hueOption: hues.join(','),
-        // hex: 00FF33  or  00FF33,CC00FF,DD0033,003333,0033FF [Possible Values: any valid 6-char hex value or list of up to five (5) hex values, separated by commas]
-        hex: hex.substr(1),
-        // hex_logic: AND  or  OR. Sets the comparison logic for the hex list. Passing AND will find palettes with all provided hex values, passing OR will find palettes with any of the provided hex values. [Possible Values: AND or OR. Default AND]
-        hex_logic: 'AND',
-        // keywords: search+term
-        keywords: keywords,
-        // keywordExact: 0 or 1   [Perform an exact search for the keywords passed. Default 0]
-        keywordExact: exactKeywords ? 1 : 0,
-        // orderCol: X   [Where X can be: dateCreated, score, name, numVotes, or numViews]
-        orderCol: sortBy,
-        // sortBy: X   [Where X can be: ASC or DESC. Default ASC]
-        sortBy: sortOrder,
-        // numResults: 20   [Number of results to return, maximum of 100. Default 20]
-        numResults: resultsCount,
-        // resultOffset: 5   [Result offset, for paging. Default 0]
-        resultOffset: resultsOffset,
-        // showPaletteWidths: 0 or 1   [Shows palette's color's widths. Default 0]
-        showPaletteWidths: enableColorsWidths ? 1 : 0,
+        ...parameters,
         ...JsonFormatParam,
     };
 }
@@ -121,30 +170,46 @@ function createPatternsRequestParameters(
     resultsCount,
     resultsOffset,
 ) {
-    // TODO validate parameters
     // TODO hex could also be an array
     // TODO pass hex_logic as parameter
+
+    let parameters = {};
+
+    // keywords: search+term
+    if (isValidString(keywords)) parameters.keywords = keywords;
+
+    // keywordExact: 0 or 1   [Perform an exact search for the keywords passed. Default 0]
+    if (isValidBoolean(exactKeywords)) parameters.keywordExact = exactKeywords ? 1 : 0;
+
+    // hueOption: yellow,orange,red  or  green,violet  or  blue [Possible Values can be a combination of: red, orange, yellow, green, aqua, blue, violet, and / or fuchsia]
+    if (isValidArray(hues)) parameters.hueOption = hues.join(',');
+
+    // hex: 00FF33  or  00FF33,CC00FF,DD0033,003333,0033FF [Possible Values: any valid 6-char hex value or list of up to five (5) hex values, separated by commas]
+    // remove '#' char
+    if (hex.charAt(0) === '#')
+        hex = hex.substr(1);
+    if (isValidString(hex)) parameters.hex = hex;
+
+    // hex_logic: AND  or  OR. Sets the comparison logic for the hex list. Passing AND will find palettes with all provided hex values, passing OR will find palettes with any of the provided hex values. [Possible Values: AND or OR. Default AND]
+    parameters.hex_logic = 'AND';
+
+    // lover: e.g. COLOURlover
+    if (isValidString(userName)) parameters.lover = userName;
+
+    // orderCol: X   [Where X can be: dateCreated, score, name, numVotes, or numViews]
+    if (isValidString(sortBy)) parameters.orderCol = sortBy;
+
+    // sortBy: X   [Where X can be: ASC or DESC. Default ASC]
+    if (isValidString(sortOrder)) parameters.sortBy = sortOrder;
+
+    // numResults: 20   [Number of results to return, maximum of 100. Default 20]
+    if (isValidInteger(resultsCount)) parameters.numResults = resultsCount;
+
+    // resultOffset: 5   [Result offset, for paging. Default 0]
+    if (isValidInteger(resultsOffset)) parameters.resultOffset = resultsOffset;
+
     return {
-        // lover: COLOURlover
-        lover: userName,
-        // hueOption: yellow,orange,red  or  green,violet  or  blue [Possible Values can be a combination of: red, orange, yellow, green, aqua, blue, violet, and / or fuchsia]
-        hueOption: hues.join(','),
-        // hex: 00FF33  or  00FF33,CC00FF,DD0033,003333,0033FF [Possible Values: any valid 6-char hex value or list of up to five (5) hex values, separated by commas]
-        hex: hex.substr(1),
-        // hex_logic: AND  or  OR. Sets the comparison logic for the hex list. Passing AND will find palettes with all provided hex values, passing OR will find palettes with any of the provided hex values. [Possible Values: AND or OR. Default AND]
-        hex_logic: 'AND',
-        // keywords: search+term
-        keywords: keywords,
-        // keywordExact: 0 or 1   [Perform an exact search for the keywords passed. Default 0]
-        keywordExact: exactKeywords ? 1 : 0,
-        // orderCol: X   [Where X can be: dateCreated, score, name, numVotes, or numViews]
-        orderCol: sortBy,
-        // sortBy: X   [Where X can be: ASC or DESC. Default ASC]
-        sortBy: sortOrder,
-        // numResults: 20   [Number of results to return, maximum of 100. Default 20]
-        numResults: resultsCount,
-        // resultOffset: 5   [Result offset, for paging. Default 0]
-        resultOffset: resultsOffset,
+        ...parameters,
         ...JsonFormatParam,
     };
 }
@@ -155,16 +220,22 @@ function createLoversRequestParameters(
     resultsCount,
     resultsOffset,
 ) {
-    // TODO validate parameters
+    let parameters = {};
+
+    // orderCol: X   [Where X can be: dateCreated, score, name, numVotes, or numViews]
+    if (isValidString(sortBy)) parameters.orderCol = sortBy;
+
+    // sortBy: X   [Where X can be: ASC or DESC. Default ASC]
+    if (isValidString(sortOrder)) parameters.sortBy = sortOrder;
+
+    // numResults: 20   [Number of results to return, maximum of 100. Default 20]
+    if (isValidInteger(resultsCount)) parameters.numResults = resultsCount;
+
+    // resultOffset: 5   [Result offset, for paging. Default 0]
+    if (isValidInteger(resultsOffset)) parameters.resultOffset = resultsOffset;
+
     return {
-        // orderCol: X   [Where X can be: dateCreated, score, name, numVotes, or numViews]
-        orderCol: sortBy,
-        // sortBy: X   [Where X can be: ASC or DESC. Default ASC]
-        sortBy: sortOrder,
-        // numResults: 20   [Number of results to return, maximum of 100. Default 20]
-        numResults: resultsCount,
-        // resultOffset: 5   [Result offset, for paging. Default 0]
-        resultOffset: resultsOffset,
+        ...parameters,
         ...JsonFormatParam,
     };
 }

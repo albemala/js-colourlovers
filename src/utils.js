@@ -16,6 +16,10 @@ function isValidArray(val) {
     return _.isArray(val);
 }
 
+function isValidBoolean(val) {
+    return _.isBoolean(val);
+}
+
 function isValidInteger(val) {
     return _.isInteger(val);
 }
@@ -37,6 +41,7 @@ module.exports = {
     isValid: isValid,
     isValidObject: isValidObject,
     isValidArray: isValidArray,
+    isValidBoolean: isValidBoolean,
     isValidInteger: isValidInteger,
     isValidNumber: isValidNumber,
     isValidString: isValidString,
