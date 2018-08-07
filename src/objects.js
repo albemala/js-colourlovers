@@ -12,11 +12,11 @@ class Color {
         // Username of the Color's creator
         this.userName = undefined;
         // Number of views this Color has received
-        this.views = undefined;
+        this.viewsCount = undefined;
         // Number of votes this Color has received
-        this.votes = undefined;
+        this.votesCount = undefined;
         // Number of comments this Color has received
-        this.comments = undefined;
+        this.commentsCount = undefined;
         // Number of hearts this Color has
         this.hearths = undefined;
         // This Color's rank on COLOURlovers.com
@@ -53,11 +53,11 @@ class Palette {
         // Username of the Palette's creator
         this.userName = undefined;
         // Number of views this Palette has received
-        this.views = undefined;
+        this.viewsCount = undefined;
         // Number of votes this Palette has received
-        this.votes = undefined;
+        this.votesCount = undefined;
         // Number of comments this Palette has received
-        this.comments = undefined;
+        this.commentsCount = undefined;
         // Number of hearts this Palette has
         this.hearths = undefined;
         // This Palette's rank on COLOURlovers.com
@@ -92,11 +92,11 @@ class Pattern {
         // Username of the Pattern's creator
         this.userName = undefined;
         // Number of views this Pattern has received
-        this.views = undefined;
+        this.viewsCount = undefined;
         // Number of votes this Pattern has received
-        this.votes = undefined;
+        this.votesCount = undefined;
         // Number of comments this Pattern has received
-        this.comments = undefined;
+        this.commentsCount = undefined;
         // Number of hearts this Pattern has
         this.hearths = undefined;
         // This Pattern's rank on COLOURlovers.com

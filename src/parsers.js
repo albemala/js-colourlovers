@@ -36,9 +36,9 @@ function parseColor(json) {
 
     if (isValidString(json.userName)) color.userName = json.userName;
 
-    if (isValidInteger(json.numViews)) color.views = json.numViews;
-    if (isValidInteger(json.numVotes)) color.votes = json.numVotes;
-    if (isValidInteger(json.numComments)) color.comments = json.numComments;
+    if (isValidInteger(json.numViews)) color.viewsCount = json.numViews;
+    if (isValidInteger(json.numVotes)) color.votesCount = json.numVotes;
+    if (isValidInteger(json.numComments)) color.commentsCount = json.numComments;
     if (isValidNumber(json.numHearts)) color.hearths = json.numHearts;
     if (isValidInteger(json.rank)) color.rank = json.rank;
 
@@ -68,9 +68,9 @@ function parsePalette(json) {
 
     if (isValidString(json.userName)) palette.userName = json.userName;
 
-    if (isValidInteger(json.numViews)) palette.views = json.numViews;
-    if (isValidInteger(json.numVotes)) palette.votes = json.numVotes;
-    if (isValidInteger(json.numComments)) palette.comments = json.numComments;
+    if (isValidInteger(json.numViews)) palette.viewsCount = json.numViews;
+    if (isValidInteger(json.numVotes)) palette.votesCount = json.numVotes;
+    if (isValidInteger(json.numComments)) palette.commentsCount = json.numComments;
     if (isValidNumber(json.numHearts)) palette.hearths = json.numHearts;
     if (isValidInteger(json.rank)) palette.rank = json.rank;
 
@@ -99,9 +99,9 @@ function parsePattern(json) {
 
     if (isValidString(json.userName)) pattern.userName = json.userName;
 
-    if (isValidInteger(json.numViews)) pattern.views = json.numViews;
-    if (isValidInteger(json.numVotes)) pattern.votes = json.numVotes;
-    if (isValidInteger(json.numComments)) pattern.comments = json.numComments;
+    if (isValidInteger(json.numViews)) pattern.viewsCount = json.numViews;
+    if (isValidInteger(json.numVotes)) pattern.votesCount = json.numVotes;
+    if (isValidInteger(json.numComments)) pattern.commentsCount = json.numComments;
     if (isValidNumber(json.numHearts)) pattern.hearths = json.numHearts;
     if (isValidInteger(json.rank)) pattern.rank = json.rank;
 
