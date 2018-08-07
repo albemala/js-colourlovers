@@ -38,6 +38,10 @@ const {
     createLoversRequest,
     createNewLoversRequest,
     createTopLoversRequest,
+    createColorsStatsRequest,
+    createPalettesStatsRequest,
+    createPatternsStatsRequest,
+    createLoversStatsRequest,
 } = require('./requests');
 const {
     getColor,
@@ -48,6 +52,10 @@ const {
     getPatterns,
     getLover,
     getLovers,
+    getColorsStats,
+    getPalettesStats,
+    getPatternsStats,
+    getLoversStats,
 } = require('./parsers');
 
 
@@ -93,6 +101,11 @@ module.exports = {
     createLoversRequest: createLoversRequest,
     createNewLoversRequest: createNewLoversRequest,
     createTopLoversRequest: createTopLoversRequest,
+    // Stats
+    createColorsStatsRequest: createColorsStatsRequest,
+    createPalettesStatsRequest: createPalettesStatsRequest,
+    createPatternsStatsRequest: createPatternsStatsRequest,
+    createLoversStatsRequest: createLoversStatsRequest,
     // Parse responses
     getColor: getColor,
     getColors: getColors,
@@ -102,4 +115,8 @@ module.exports = {
     getPatterns: getPatterns,
     getLover: getLover,
     getLovers: getLovers,
+    getColorsStats: getColorsStats,
+    getPalettesStats: getPalettesStats,
+    getPatternsStats: getPatternsStats,
+    getLoversStats: getLoversStats,
 };

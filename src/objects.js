@@ -153,10 +153,46 @@ class Lover {
     }
 }
 
+class ColorsStats {
+
+    constructor() {
+        // Total number of colors, palettes, patterns or lovers in the COLOURlovers system
+        this.total = undefined;
+    }
+}
+
+class PalettesStats {
+
+    constructor() {
+        // Total number of colors, palettes, patterns or lovers in the COLOURlovers system
+        this.total = undefined;
+    }
+}
+
+class PatternsStats {
+
+    constructor() {
+        // Total number of colors, palettes, patterns or lovers in the COLOURlovers system
+        this.total = undefined;
+    }
+}
+
+class LoversStats {
+
+    constructor() {
+        // Total number of colors, palettes, patterns or lovers in the COLOURlovers system
+        this.total = undefined;
+    }
+}
+
 
 module.exports = {
     Color: Color,
     Palette: Palette,
     Pattern: Pattern,
     Lover: Lover,
+    ColorsStats: ColorsStats,
+    PalettesStats: PalettesStats,
+    PatternsStats: PatternsStats,
+    LoversStats: LoversStats,
 };

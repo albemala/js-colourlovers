@@ -93,4 +93,48 @@ suite('request', function () {
             }
         });
     });
+    test('#9', function (done) {
+        request(ColourLovers.createColorsStatsRequest(), { json: true }, (err, res, body) => {
+            if (err) {
+                console.log(err);
+                done(err);
+            } else {
+                console.log(ColourLovers.getColorsStats(body));
+                done();
+            }
+        });
+    });
+    test('#10', function (done) {
+        request(ColourLovers.createPalettesStatsRequest(), { json: true }, (err, res, body) => {
+            if (err) {
+                console.log(err);
+                done(err);
+            } else {
+                console.log(ColourLovers.getPalettesStats(body));
+                done();
+            }
+        });
+    });
+    test('#11', function (done) {
+        request(ColourLovers.createPatternsStatsRequest(), { json: true }, (err, res, body) => {
+            if (err) {
+                console.log(err);
+                done(err);
+            } else {
+                console.log(ColourLovers.getPatternsStats(body));
+                done();
+            }
+        });
+    });
+    test('#12', function (done) {
+        request(ColourLovers.createLoversStatsRequest(), { json: true }, (err, res, body) => {
+            if (err) {
+                console.log(err);
+                done(err);
+            } else {
+                console.log(ColourLovers.getLoversStats(body));
+                done();
+            }
+        });
+    });
 });

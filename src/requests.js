@@ -384,6 +384,30 @@ function createTopLoversRequest(
     return `${apiUrl}/lovers/top?${requestParameters}`;
 }
 
+/*
+------------------- Stats -------------------
+ */
+
+function createColorsStatsRequest() {
+    const parameters = createRequestParameters(JsonFormatParam);
+    return `${apiUrl}/stats/colors?${parameters}`;
+}
+
+function createPalettesStatsRequest() {
+    const parameters = createRequestParameters(JsonFormatParam);
+    return `${apiUrl}/stats/palettes?${parameters}`;
+}
+
+function createPatternsStatsRequest() {
+    const parameters = createRequestParameters(JsonFormatParam);
+    return `${apiUrl}/stats/patterns?${parameters}`;
+}
+
+function createLoversStatsRequest() {
+    const parameters = createRequestParameters(JsonFormatParam);
+    return `${apiUrl}/stats/lovers?${parameters}`;
+}
+
 
 module.exports = {
     // Colors
@@ -409,4 +433,9 @@ module.exports = {
     createLoversRequest: createLoversRequest,
     createNewLoversRequest: createNewLoversRequest,
     createTopLoversRequest: createTopLoversRequest,
+    // Stats
+    createColorsStatsRequest: createColorsStatsRequest,
+    createPalettesStatsRequest: createPalettesStatsRequest,
+    createPatternsStatsRequest: createPatternsStatsRequest,
+    createLoversStatsRequest: createLoversStatsRequest,
 };

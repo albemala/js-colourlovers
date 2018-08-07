@@ -6,6 +6,10 @@ const {
     Palette,
     Pattern,
     Lover,
+    ColorsStats,
+    PalettesStats,
+    PatternsStats,
+    LoversStats,
 } = require('./objects');
 const {
     isValidObject,
@@ -150,6 +154,30 @@ function parseLover(json) {
     return lover;
 }
 
+function parseColorsStats(json) {
+    const stats = new ColorsStats();
+    if (isValidInteger(json.total)) stats.total = json.total;
+    return stats;
+}
+
+function parsePalettesStats(json) {
+    const stats = new PalettesStats();
+    if (isValidInteger(json.total)) stats.total = json.total;
+    return stats;
+}
+
+function parsePatternsStats(json) {
+    const stats = new PatternsStats();
+    if (isValidInteger(json.total)) stats.total = json.total;
+    return stats;
+}
+
+function parseLoversStats(json) {
+    const stats = new LoversStats();
+    if (isValidInteger(json.total)) stats.total = json.total;
+    return stats;
+}
+
 
 function getColor(json) {
 
@@ -231,6 +259,29 @@ function getLovers(json) {
     return json.map(lover => getLover(lover));
 }
 
+function getColorsStats(json) {
+    if (!isValidObject(json))
+        throw new Error(`json is not valid or malformed: ${json}`);
+    return parseColorsStats(json);
+}
+
+function getPalettesStats(json) {
+    if (!isValidObject(json))
+        throw new Error(`json is not valid or malformed: ${json}`);
+    return parsePalettesStats(json);
+}
+
+function getPatternsStats(json) {
+    if (!isValidObject(json))
+        throw new Error(`json is not valid or malformed: ${json}`);
+    return parsePatternsStats(json);
+}
+
+function getLoversStats(json) {
+    if (!isValidObject(json))
+        throw new Error(`json is not valid or malformed: ${json}`);
+    return parseLoversStats(json);
+}
 
 module.exports = {
     getColor: getColor,
@@ -241,4 +292,8 @@ module.exports = {
     getPatterns: getPatterns,
     getLover: getLover,
     getLovers: getLovers,
+    getColorsStats: getColorsStats,
+    getPalettesStats: getPalettesStats,
+    getPatternsStats: getPatternsStats,
+    getLoversStats: getLoversStats,
 };
