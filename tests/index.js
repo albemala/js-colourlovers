@@ -71,4 +71,26 @@ suite('request', function () {
             }
         });
     });
+    test('#7', function (done) {
+        request(ColourLovers.createLoverRequest('COLOURlover'), { json: true }, (err, res, body) => {
+            if (err) {
+                console.log(err);
+                done(err);
+            } else {
+                console.log(ColourLovers.getLover(body));
+                done();
+            }
+        });
+    });
+    test('#8', function (done) {
+        request(ColourLovers.createLoversRequest(), { json: true }, (err, res, body) => {
+            if (err) {
+                console.log(err);
+                done(err);
+            } else {
+                console.log(ColourLovers.getLovers(body));
+                done();
+            }
+        });
+    });
 });

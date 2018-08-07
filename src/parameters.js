@@ -149,6 +149,26 @@ function createPatternsRequestParameters(
     };
 }
 
+function createLoversRequestParameters(
+    sortBy,
+    sortOrder,
+    resultsCount,
+    resultsOffset,
+) {
+    // TODO validate parameters
+    return {
+        // orderCol: X   [Where X can be: dateCreated, score, name, numVotes, or numViews]
+        orderCol: sortBy,
+        // sortBy: X   [Where X can be: ASC or DESC. Default ASC]
+        sortBy: sortOrder,
+        // numResults: 20   [Number of results to return, maximum of 100. Default 20]
+        numResults: resultsCount,
+        // resultOffset: 5   [Result offset, for paging. Default 0]
+        resultOffset: resultsOffset,
+        ...JsonFormatParam,
+    };
+}
+
 
 module.exports = {
     // SortBy
@@ -176,4 +196,5 @@ module.exports = {
     createColorsRequestParameters: createColorsRequestParameters,
     createPalettesRequestParameters: createPalettesRequestParameters,
     createPatternsRequestParameters: createPatternsRequestParameters,
+    createLoversRequestParameters: createLoversRequestParameters,
 };

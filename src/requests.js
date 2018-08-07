@@ -13,6 +13,7 @@ const {
     createColorsRequestParameters,
     createPalettesRequestParameters,
     createPatternsRequestParameters,
+    createLoversRequestParameters,
 } = require('./parameters');
 
 
@@ -324,6 +325,65 @@ function createTopPatternsRequest(
     return `${apiUrl}/patterns/top?${requestParameters}`;
 }
 
+/*
+------------------- Lovers -------------------
+ */
+
+function createLoverRequest(userName) {
+    // TODO add comments parameter
+    if (!isValidString(userName))
+        throw new Error(`userName parameter is not valid: ${userName}`);
+
+    const parameters = createRequestParameters(JsonFormatParam);
+    return `${apiUrl}/lover/${userName}?${parameters}`;
+}
+
+function createLoversRequest(
+    sortBy = SortByDateCreated,
+    sortOrder = AscendantSortOrder,
+    resultsCount = 20,
+    resultsOffset = 0,
+) {
+    let parameters = createLoversRequestParameters(
+        sortBy,
+        sortOrder,
+        resultsCount,
+        resultsOffset,
+    );
+    const requestParameters = createRequestParameters(parameters);
+    return `${apiUrl}/lovers?${requestParameters}`;
+}
+
+function createNewLoversRequest(
+    sortOrder = AscendantSortOrder,
+    resultsCount = 20,
+    resultsOffset = 0,
+) {
+    let parameters = createLoversRequestParameters(
+        null,
+        sortOrder,
+        resultsCount,
+        resultsOffset,
+    );
+    const requestParameters = createRequestParameters(parameters);
+    return `${apiUrl}/lovers/new?${requestParameters}`;
+}
+
+function createTopLoversRequest(
+    sortOrder = AscendantSortOrder,
+    resultsCount = 20,
+    resultsOffset = 0,
+) {
+    let parameters = createLoversRequestParameters(
+        null,
+        sortOrder,
+        resultsCount,
+        resultsOffset,
+    );
+    const requestParameters = createRequestParameters(parameters);
+    return `${apiUrl}/lovers/top?${requestParameters}`;
+}
+
 
 module.exports = {
     // Colors
@@ -344,4 +404,9 @@ module.exports = {
     createPatternsRequest: createPatternsRequest,
     createNewPatternsRequest: createNewPatternsRequest,
     createTopPatternsRequest: createTopPatternsRequest,
+    // Lovers
+    createLoverRequest: createLoverRequest,
+    createLoversRequest: createLoversRequest,
+    createNewLoversRequest: createNewLoversRequest,
+    createTopLoversRequest: createTopLoversRequest,
 };

@@ -118,9 +118,45 @@ class Pattern {
     }
 }
 
+class Lover {
+
+    constructor() {
+
+        // This Lover's Username
+        this.userName = undefined;
+        // Date this Lover registered with COLOURlovers.com
+        this.dateRegistered = undefined;
+        // Date this Lover was last active on COLOURlovers.com
+        this.dateLastActive = undefined;
+        // This Lover's rating
+        this.rating = undefined;
+        // This Lover's location
+        this.location = undefined;
+        // Number of Colors this Lover has made
+        this.colorsCount = undefined;
+        // Number of Palettes this Lover has made
+        this.palettesCount = undefined;
+        // Number of Patterns this Lover has made
+        this.patternsCount = undefined;
+        // Number of comments this Lover has made
+        this.commentsCount = undefined;
+        // Number of Lovers [friends] this Lover has
+        this.loversCount = undefined;
+        // Number of comments this Lover has on their profile
+        this.commentsOnProfileCount = undefined;
+        // Last 10 comments made on this Lover's profile
+        this.comments = undefined;
+        // This Lover's COLOURlovers.com URL
+        this.url = undefined;
+        // This Lover's COLOURlovers.com API URL
+        this.apiUrl = undefined;
+    }
+}
+
 
 module.exports = {
     Color: Color,
     Palette: Palette,
     Pattern: Pattern,
+    Lover: Lover,
 };

@@ -5,6 +5,7 @@ const {
     Color,
     Palette,
     Pattern,
+    Lover,
 } = require('./objects');
 const {
     isValidObject,
@@ -119,6 +120,36 @@ function parsePattern(json) {
     return pattern;
 }
 
+function parseLover(json) {
+
+    const lover = new Lover();
+
+    if (isValidString(json.userName)) lover.userName = json.userName;
+
+    lover.dateRegistered = parseDate(json.dateRegistered);
+    lover.dateLastActive = parseDate(json.dateLastActive);
+
+    if (isValidInteger(json.rating)) lover.rating = json.rating;
+
+    if (isValidString(json.location)) lover.location = json.location;
+
+    if (isValidInteger(json.numColors)) lover.colorsCount = json.numColors;
+    if (isValidInteger(json.numPalettes)) lover.palettesCount = json.numPalettes;
+    if (isValidInteger(json.numPatterns)) lover.patternsCount = json.numPatterns;
+
+    if (isValidInteger(json.numLovers)) lover.loversCount = json.numLovers;
+
+    if (isValidInteger(json.numCommentsMade)) lover.commentsCount = json.numCommentsMade;
+    if (isValidInteger(json.numCommentsOnProfile)) lover.commentsOnProfileCount = json.numCommentsOnProfile;
+
+    if (isValidArray(json.comments)) lover.comments = json.comments;
+
+    if (isValidString(json.url)) lover.url = json.url;
+    if (isValidString(json.apiUrl)) lover.apiUrl = json.apiUrl;
+
+    return lover;
+}
+
 
 function getColor(json) {
 
@@ -180,6 +211,26 @@ function getPatterns(json) {
     return json.map(pattern => getPattern(pattern));
 }
 
+function getLover(json) {
+
+    if (isValidArray(json) && json.length === 1) {
+        const firstResult = json[0];
+        return parseLover(firstResult);
+    }
+    if (isValidObject(json)) {
+        return parseLover(json);
+    }
+
+    throw new Error(`json is not valid or malformed: ${json}`);
+}
+
+function getLovers(json) {
+    if (!isValidArray(json))
+        throw new Error(`json is not valid or malformed: ${json}`);
+
+    return json.map(lover => getLover(lover));
+}
+
 
 module.exports = {
     getColor: getColor,
@@ -188,4 +239,6 @@ module.exports = {
     getPalettes: getPalettes,
     getPattern: getPattern,
     getPatterns: getPatterns,
+    getLover: getLover,
+    getLovers: getLovers,
 };
