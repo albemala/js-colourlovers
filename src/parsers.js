@@ -49,7 +49,7 @@ function parseColor(json) {
 
     color.dateCreated = parseDate(json.dateCreated);
 
-    if (isValidString(json.hex)) color.hex = `#${json.hex}`;
+    if (isValidString(json.hex)) color.hex = json.hex;
     if (isValidObject(json.rgb)) color.rgb = json.rgb;
     if (isValidObject(json.hsv)) color.hsv = json.hsv;
 
@@ -81,7 +81,7 @@ function parsePalette(json) {
 
     palette.dateCreated = parseDate(json.dateCreated);
 
-    if (isValidArray(json.colors)) palette.colors = json.colors.map(hex => `#${hex}`);
+    if (isValidArray(json.colors)) palette.colors = json.colors;
     if (isValidArray(json.colorWidths)) palette.colorsWidths = json.colorWidths;
 
     if (isValidString(json.description)) palette.description = json.description;
@@ -112,7 +112,7 @@ function parsePattern(json) {
 
     pattern.dateCreated = parseDate(json.dateCreated);
 
-    if (isValidArray(json.colors)) pattern.colors = json.colors.map(hex => `#${hex}`);
+    if (isValidArray(json.colors)) pattern.colors = json.colors;
 
     if (isValidString(json.description)) pattern.description = json.description;
 
