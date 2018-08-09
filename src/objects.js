@@ -17,7 +17,7 @@ class Color {
         this.votesCount = undefined;
         // Number of comments this Color has received
         this.commentsCount = undefined;
-        // Number of hearts this Color has
+        // Number of hearts this Color has [number between 0 and 5]
         this.hearths = undefined;
         // This Color's rank on COLOURlovers.com
         this.rank = undefined;
@@ -58,7 +58,7 @@ class Palette {
         this.votesCount = undefined;
         // Number of comments this Palette has received
         this.commentsCount = undefined;
-        // Number of hearts this Palette has
+        // Number of hearts this Palette has [number between 0 and 5]
         this.hearths = undefined;
         // This Palette's rank on COLOURlovers.com
         this.rank = undefined;
@@ -97,7 +97,7 @@ class Pattern {
         this.votesCount = undefined;
         // Number of comments this Pattern has received
         this.commentsCount = undefined;
-        // Number of hearts this Pattern has
+        // Number of hearts this Pattern has [number between 0 and 5]
         this.hearths = undefined;
         // This Pattern's rank on COLOURlovers.com
         this.rank = undefined;
@@ -128,7 +128,7 @@ class Lover {
         this.dateRegistered = undefined;
         // Date this Lover was last active on COLOURlovers.com
         this.dateLastActive = undefined;
-        // This Lover's rating
+        // This Lover's rating [KARMA on website]
         this.rating = undefined;
         // This Lover's location
         this.location = undefined;
@@ -138,10 +138,10 @@ class Lover {
         this.palettesCount = undefined;
         // Number of Patterns this Lover has made
         this.patternsCount = undefined;
+        // Number of Lovers [friends/followers] this Lover has
+        this.loversCount = undefined;
         // Number of comments this Lover has made
         this.commentsCount = undefined;
-        // Number of Lovers [friends] this Lover has
-        this.loversCount = undefined;
         // Number of comments this Lover has on their profile
         this.commentsOnProfileCount = undefined;
         // Last 10 comments made on this Lover's profile
