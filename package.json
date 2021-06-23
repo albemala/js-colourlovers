@@ -6,8 +6,10 @@
   "author": "<albemala@gmail.com>",
   "license": "MIT",
   "private": false,
+  "main": "./src/index.js",
   "scripts": {
-    "test": "yarn mocha ./tests/index.js"
+    "test": "yarn mocha ./tests/index.js",
+    "prepublish": "yarn test"
   },
   "devDependencies": {
     "mocha": "^5.2.0",

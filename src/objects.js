@@ -54,7 +54,7 @@ class Palette {
         this.userName = undefined;
         // Number of views this Palette has received
         this.viewsCount = undefined;
-        // Number of votes this Palette has received
+        // Number of votes [loves] this Palette has received
         this.votesCount = undefined;
         // Number of comments this Palette has received
         this.commentsCount = undefined;
@@ -93,7 +93,7 @@ class Pattern {
         this.userName = undefined;
         // Number of views this Pattern has received
         this.viewsCount = undefined;
-        // Number of votes this Pattern has received
+        // Number of votes [loves] this Pattern has received
         this.votesCount = undefined;
         // Number of comments this Pattern has received
         this.commentsCount = undefined;

@@ -15,7 +15,7 @@ const {
 const SortByDateCreated = 'dateCreated';
 const SortByScore = 'score';
 const SortByName = 'name';
-const SortByVotes = 'numVotes';
+const SortByVotes = 'numVotes'; // loves
 const SortByViews = 'numViews';
 
 const AscendantSortOrder = 'ASC';

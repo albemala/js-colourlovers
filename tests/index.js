@@ -11,6 +11,7 @@ suite('request', function () {
                 console.log(err);
                 done(err);
             } else {
+                console.log(body);
                 console.log(ColourLovers.getColor(body));
                 done();
             }
@@ -22,6 +23,7 @@ suite('request', function () {
                 console.log(err);
                 done(err);
             } else {
+                console.log(body);
                 console.log(ColourLovers.getColors(body));
                 done();
             }
@@ -33,6 +35,7 @@ suite('request', function () {
                 console.log(err);
                 done(err);
             } else {
+                console.log(body);
                 console.log(ColourLovers.getPalette(body));
                 done();
             }
@@ -44,6 +47,7 @@ suite('request', function () {
                 console.log(err);
                 done(err);
             } else {
+                console.log(body);
                 console.log(ColourLovers.getPalettes(body));
                 done();
             }
@@ -55,6 +59,7 @@ suite('request', function () {
                 console.log(err);
                 done(err);
             } else {
+                console.log(body);
                 console.log(ColourLovers.getPattern(body));
                 done();
             }
@@ -66,6 +71,7 @@ suite('request', function () {
                 console.log(err);
                 done(err);
             } else {
+                console.log(body);
                 console.log(ColourLovers.getPatterns(body));
                 done();
             }
@@ -77,6 +83,7 @@ suite('request', function () {
                 console.log(err);
                 done(err);
             } else {
+                console.log(body);
                 console.log(ColourLovers.getLover(body));
                 done();
             }
@@ -88,6 +95,7 @@ suite('request', function () {
                 console.log(err);
                 done(err);
             } else {
+                console.log(body);
                 console.log(ColourLovers.getLovers(body));
                 done();
             }
@@ -99,6 +107,7 @@ suite('request', function () {
                 console.log(err);
                 done(err);
             } else {
+                console.log(body);
                 console.log(ColourLovers.getColorsStats(body));
                 done();
             }
@@ -110,6 +119,7 @@ suite('request', function () {
                 console.log(err);
                 done(err);
             } else {
+                console.log(body);
                 console.log(ColourLovers.getPalettesStats(body));
                 done();
             }
@@ -121,6 +131,7 @@ suite('request', function () {
                 console.log(err);
                 done(err);
             } else {
+                console.log(body);
                 console.log(ColourLovers.getPatternsStats(body));
                 done();
             }
@@ -132,6 +143,7 @@ suite('request', function () {
                 console.log(err);
                 done(err);
             } else {
+                console.log(body);
                 console.log(ColourLovers.getLoversStats(body));
                 done();
             }
